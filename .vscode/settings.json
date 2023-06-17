@@ -9,6 +9,7 @@
     ".vscode": true,
     "LICENSE": true,
     "package-lock.json": true,
-    "public": true
+    "public": true,
+    "build": true
   }
 }
