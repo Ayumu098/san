@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    "node_modules": true,
+    "src\\react-app-env.d.ts": true,
+    "src\\index.tsx": true,
+    "src\\index.css": true,
+    ".gitignore": true,
+    "tsconfig.json": true,
+    ".vscode": true,
+    "LICENSE": true,
+    "package-lock.json": true,
+    "public": true
+  }
+}
