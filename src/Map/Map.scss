@@ -1,0 +1,72 @@
+.Controls {
+
+    $dimension: min(13vw, 13vh);
+    
+    gap: 1px;
+    display: grid;
+    grid-template-columns: repeat(4, $dimension);
+    grid-template-rows: repeat(1, $dimension);
+    justify-content: space-between;
+    border-radius: 10px;
+
+    button {
+        margin: 10px;
+
+        text-align: center;
+        vertical-align: middle;
+
+        background-color: black;
+        border-radius: 10px;
+        color: white;
+
+        text-align: center;
+        font-size: 100%;
+        color: white;
+
+        transition: all .15s ease-in-out;
+    }
+
+    button:hover {
+        color: black;
+        background-color: white;
+    }
+
+    .Move {
+        text-align: center;
+        height: 100%
+    }
+}
+
+input {
+    display: block;
+    margin: auto;
+    width: 95%;
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 80%;
+    padding: 10px;
+}
+
+.Move {
+    color: white;
+    font-size: max(2vw, 2vh);
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.End {
+    color: white;
+    font-size: max(8vw, 8vh);
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
