@@ -63,7 +63,7 @@ function render(space: number[][]) {
 }
 
 export default function Map() {
-  const initialMoves = 100;
+  const initialMoves = 42;
 
   const dimensions: number = 50;
   const subdimensions: number = 10;
