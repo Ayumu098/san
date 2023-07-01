@@ -103,7 +103,7 @@ export default function Map() {
             type="text"
             name="game"
             className="seed"
-            placeholder="Insert game room: Currently 'start'"
+            placeholder="Type anything here for a new map"
             onChange={(e) => {
               setSeed(e.target.value);
             }}
