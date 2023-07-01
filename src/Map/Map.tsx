@@ -65,7 +65,7 @@ function render(space: number[][]) {
 export default function Map() {
   const initialMoves = 42;
 
-  const dimensions: number = 50;
+  const dimensions: number = 100;
   const subdimensions: number = 10;
 
   const [seed, setSeed] = useState("start");
@@ -103,7 +103,7 @@ export default function Map() {
             type="text"
             name="game"
             className="seed"
-            placeholder="Insert game room: Currently 'start'"
+            placeholder="Type anything here for a new map"
             onChange={(e) => {
               setSeed(e.target.value);
             }}
