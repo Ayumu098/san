@@ -1,0 +1,14 @@
+{
+  "color": {
+    "choices": [
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "indigo",
+      "violet",
+      "black"
+    ]
+  }
+}

@@ -3,17 +3,8 @@
 $dimension: min(5vw, 5vh);
 
 .Cell {
-    //margin: 10px;
     width: $dimension;
     height: $dimension;
-    text-align: center;
-    vertical-align: middle;
 
     transition: all .15s ease-in-out;
 }
-
-.Cell:hover {
-    scale: 1.1;
-    font-size: larger;
-}
-

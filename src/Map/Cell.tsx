@@ -1,14 +1,17 @@
 import "./Cell.scss";
 
 interface ColorProps {
+  color: string;
   reference: number;
   intensity: number;
 }
 
-export default function Cell({ reference, intensity }: ColorProps) {
-  const color = `rgb(${intensity}, ${intensity}, ${intensity})`;
+export default function Cell({ color, reference, intensity }: ColorProps) {
   return (
-    <td className="Cell" key={reference} style={{ backgroundColor: color }}>
-    </td>
+    <td
+      className="Cell"
+      key={reference}
+      style={{ backgroundColor: color, opacity: intensity }}
+    ></td>
   );
 }

@@ -1,0 +1,13 @@
+{
+    "board": {
+        "peakCount": 3,
+        "initialMoves": 42,
+        "dimensions": 100,
+        "subdimensions": 10,
+        "initialSeed": "start"
+    },
+    "color": {
+        "noiseBoundary": 100,
+        "boundary": 255
+    }
+}

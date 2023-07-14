@@ -1,39 +1,46 @@
 import Cell from "./Cell";
 import { useState } from "react";
+import config from "./config.json";
+
 import "./Map.scss";
 
 const seedrandom = require("seedrandom");
 
 function intensity(position: number[], peakPoints: number[][]) {
+
   return peakPoints
     .map(
       (peakPoint: number[]) =>
-        1 /
-        Math.sqrt(
-          (peakPoint[0] - position[0]) ** 2 + (peakPoint[1] - position[1]) ** 2
+      peakPoint[0] === position[0] && peakPoint[1] === position[1] ? 1 :
+      1 /
+        (
+          Math.abs(peakPoint[0] - position[0]) +
+          Math.abs(peakPoint[1] - position[1])
         )
     )
     .reduce((a, b) => a + b);
 }
 
-function generate(generator: any, dimensions: number) {
-  const colorVariety: number = 100;
-  const colorBoundary: number = 255;
 
-  const peaks = 3;
-  const peakPoints = [...Array(peaks)].map(() =>
+function noise(generator: any) {
+    return generator() * config.color.noiseBoundary
+}
+
+function generate(generator: any, dimensions: number) {
+
+  const peakPoints = [...Array(config.board.peakCount)].map(() =>
     place(dimensions, 0, generator)
   );
 
   const image = [...Array(dimensions)].map((_, row) =>
     [...Array(dimensions)].map(
       (_, col) =>
-        intensity([row, col], peakPoints) * colorBoundary +
-        generator() * colorVariety
+
+        ((intensity([row, col], peakPoints) * config.color.boundary)
+        + noise(generator))/config.color.boundary
+
     )
   );
-
-  console.log(image);
 
   return image;
 }
@@ -51,31 +58,32 @@ function place(dimensions: number, subdimensions: number, generator: any) {
   ];
 }
 
-function render(space: number[][]) {
+function render(theme: string, space: number[][]) {
   var count: number = 0;
   return space.map((row: number[], rowIndex: number) => (
     <tr>
       {row.map((cell: number, cellIndex: number) => (
-        <Cell intensity={cell} reference={count++} />
+        <Cell color={theme} intensity={cell} reference={count++} />
       ))}
     </tr>
   ));
 }
 
-export default function Map() {
-  const initialMoves = 42;
+interface MapProps {
+  darkMode: boolean;
+  theme: string;
+}
 
-  const dimensions: number = 100;
-  const subdimensions: number = 10;
+export default function Map({darkMode, theme}: MapProps) {
 
-  const [seed, setSeed] = useState("start");
+  const [seed, setSeed] = useState(config.board.initialSeed);
   const generator = seedrandom(seed);
-  const image: number[][] = generate(generator, dimensions);
+  const image: number[][] = generate(generator, config.board.dimensions);
 
   const [position, setPosition] = useState(
-    place(dimensions, subdimensions, Math.random)
+    place(config.board.dimensions, config.board.subdimensions, Math.random)
   );
-  const [moves, setMoves] = useState(initialMoves);
+  const [moves, setMoves] = useState(config.board.initialMoves);
 
   function move(x_change: number, y_change: number) {
     const row = position[0] + y_change;
@@ -83,23 +91,41 @@ export default function Map() {
 
     if (
       0 <= row &&
-      row < dimensions - subdimensions &&
+      row < config.board.dimensions - config.board.subdimensions &&
       0 <= col &&
-      col < dimensions - subdimensions
+      col < config.board.dimensions - config.board.subdimensions
     ) {
       setPosition([row, col]);
       setMoves(moves - 1);
     }
   }
 
+  const style = darkMode
+    ? {
+        backgroundColor: "black",
+        color: "white",
+      }
+    : {
+        backgroundColor: "white",
+        color: "black",
+      };
+
   return (
     <div className="Map">
       {moves > 0 ? (
         <div>
           <table>
-            <tbody>{render(sample(image, position, subdimensions))}</tbody>
+            <tbody>
+              {render(theme, sample(image, position, config.board.subdimensions))}
+            </tbody>
           </table>
-          <input
+          <div className="Controls">
+            <button onClick={() => move(+0, -1)} style={style}>&#8593;</button>
+            <button onClick={() => move(+0, +1)} style={style}>&#8595;</button>
+            <button onClick={() => move(-1, +0)} style={style}>&#8592;</button>
+            <button onClick={() => move(+1, +0)} style={style}>&#8594;</button>
+          </div>
+          <input style={style}
             type="text"
             name="game"
             className="seed"
@@ -108,12 +134,7 @@ export default function Map() {
               setSeed(e.target.value);
             }}
           />
-          <div className="Controls">
-            <button onClick={() => move(+0, -1)}>&#8593;</button>
-            <button onClick={() => move(+0, +1)}>&#8595;</button>
-            <button onClick={() => move(-1, +0)}>&#8592;</button>
-            <button onClick={() => move(+1, +0)}>&#8594;</button>
-          </div>
+
           <p className="Move">{moves}</p>
         </div>
       ) : (

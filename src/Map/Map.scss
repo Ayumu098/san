@@ -1,34 +1,25 @@
 .Controls {
 
-    $dimension: min(13vw, 13vh);
-    
-    gap: 1px;
+    $dimension: min(11vw, 11vh);
+
     display: grid;
-    grid-template-columns: repeat(4, $dimension);
-    grid-template-rows: repeat(1, $dimension);
-    justify-content: space-between;
-    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
 
     button {
-        margin: 10px;
 
         text-align: center;
         vertical-align: middle;
 
         background-color: black;
-        border-radius: 10px;
-        color: white;
 
-        text-align: center;
-        font-size: 100%;
-        color: white;
+        font-size: min(4vw, 4vh);
+        width: $dimension;
+        height: $dimension;
 
         transition: all .15s ease-in-out;
-    }
-
-    button:hover {
-        color: black;
-        background-color: white;
     }
 
     .Move {
@@ -41,7 +32,7 @@ input {
     display: block;
     margin: auto;
     width: 95%;
-    height: 50px;
+    height: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
     color: white;

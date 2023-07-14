@@ -1,0 +1,14 @@
+.Color {
+    width: min(4.5vw, 4.5vh);
+    height: min(4.5vw, 4.5vh);
+
+    border: 0px;
+    margin: min(1vw, 1vh);
+
+    transition: 0.1s ease;
+    border-radius: 100%;
+}
+
+.Color:hover {
+    scale: 1.1;
+}
