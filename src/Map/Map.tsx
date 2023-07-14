@@ -72,11 +72,11 @@ function render(theme: string, space: number[][]) {
 interface MapProps {
   darkMode: boolean;
   theme: string;
+  seed: string;
 }
 
-export default function Map({darkMode, theme}: MapProps) {
+export default function Map({darkMode, theme, seed}: MapProps) {
 
-  const [seed, setSeed] = useState(config.board.initialSeed);
   const generator = seedrandom(seed);
   const image: number[][] = generate(generator, config.board.dimensions);
 
@@ -125,16 +125,6 @@ export default function Map({darkMode, theme}: MapProps) {
             <button onClick={() => move(-1, +0)} style={style}>&#8592;</button>
             <button onClick={() => move(+1, +0)} style={style}>&#8594;</button>
           </div>
-          <input style={style}
-            type="text"
-            name="game"
-            className="seed"
-            placeholder="Type anything here for a new map"
-            onChange={(e) => {
-              setSeed(e.target.value);
-            }}
-          />
-
           <p className="Move">{moves}</p>
         </div>
       ) : (

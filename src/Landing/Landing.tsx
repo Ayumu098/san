@@ -8,6 +8,7 @@ interface LandingProps {
   setDark: (darkMode: boolean) => void;
   setTheme: (color: string) => void;
   setStart: (start: boolean) => void;
+  setSeed: (seed: string) => void;
 }
 
 function ColorDarkMode(darkMode: boolean, color: string) {
@@ -26,6 +27,7 @@ export default function Landing({
   setDark,
   setTheme,
   setStart,
+  setSeed,
 }: LandingProps) {
   const style = darkMode
     ? {
@@ -55,6 +57,15 @@ export default function Landing({
           {darkMode ? "Dark" : "Light"}
         </button>
       </div>
+      <input style={style}
+            type="text"
+            name="game"
+            className="seed"
+            placeholder="Type anything here for a new map"
+            onChange={(e) => {
+              setSeed(e.target.value);
+            }}
+          />
       <div className="Colors">
         {config.color.choices.map((color: string) => (
           <Color
