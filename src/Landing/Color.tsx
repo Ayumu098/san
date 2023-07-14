@@ -7,6 +7,6 @@ interface ColorProps {
     onClick: () => void;
 }
 
-export default function Color({color, selected, onClick}: ColorProps) {
-    return <button className="Color" style={{backgroundColor:color, scale:selected?2:1 }} onClick={onClick}/>
+export default function Color({color, onClick}: ColorProps) {
+    return <button className="Color" style={{backgroundColor:color}} onClick={onClick}/>
 }

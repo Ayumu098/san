@@ -4,34 +4,30 @@
 
     padding-top: 20px;
     padding-bottom: 10px;
+
+    .darkToggle {
+        width: min(4.5vw, 4.5vh);
+        height: min(4.5vw, 4.5vh);
+
+        border: min(1vw, 1vh) solid;
+        margin: min(1vw, 1vh);
+        align-self: center;
+
+        transition: 0.1s ease;
+        border-radius: 100%;
+    }
+
+    .darkToggle:hover {
+        scale: 1.1;
+    }
+
 }
 
-.Buttons {
-    display: flex;
-    justify-content: center;
+.MapSelection {
+    height: min(6vw, 6vh);
+    width: 94%;
 
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-button {
-
-    padding: 10px;
-    width: 50%;
-    margin: 10px;
-    text-align: center;
-    vertical-align: middle;
-
-    border: 1px solid ;
-
-    border-radius: 10px;
-
-    text-align: center;
+    border-radius: 15px;
     font-size: 80%;
-
-    transition: all .15s ease;
-}
-
-button:hover {
-    scale: 1.1;
+    padding: 10px;
 }

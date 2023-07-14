@@ -1,45 +1,38 @@
 .Controls {
 
-    $dimension: min(11vw, 11vh);
-
-    display: grid;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 
     width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
-    button {
+
+    .Control {
+
+        $dimension: min(11vw, 11vh);
 
         text-align: center;
         vertical-align: middle;
-
-        background-color: black;
 
         font-size: min(4vw, 4vh);
         width: $dimension;
         height: $dimension;
 
+        border: solid;
+        border-radius: min(2.5vw, 2.5vh);
+
         transition: all .15s ease-in-out;
+    }
+
+    .Control:hover {
+        scale: 1.1;
     }
 
     .Move {
         text-align: center;
         height: 100%
     }
-}
-
-input {
-    display: block;
-    margin: auto;
-    width: 95%;
-    height: 30px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: white;
-    background-color: black;
-    border-radius: 15px;
-    font-size: 80%;
-    padding: 10px;
 }
 
 .Move {

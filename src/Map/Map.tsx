@@ -7,27 +7,22 @@ import "./Map.scss";
 const seedrandom = require("seedrandom");
 
 function intensity(position: number[], peakPoints: number[][]) {
-
   return peakPoints
-    .map(
-      (peakPoint: number[]) =>
-      peakPoint[0] === position[0] && peakPoint[1] === position[1] ? 1 :
-      1 /
-        (
-          Math.abs(peakPoint[0] - position[0]) +
-          Math.abs(peakPoint[1] - position[1])
-        )
+    .map((peakPoint: number[]) =>
+      peakPoint[0] === position[0] && peakPoint[1] === position[1]
+        ? 1
+        : 1 /
+          (Math.abs(peakPoint[0] - position[0]) +
+            Math.abs(peakPoint[1] - position[1]))
     )
     .reduce((a, b) => a + b);
 }
 
-
 function noise(generator: any) {
-    return generator() * config.color.noiseBoundary
+  return generator() * config.color.noiseBoundary;
 }
 
 function generate(generator: any, dimensions: number) {
-
   const peakPoints = [...Array(config.board.peakCount)].map(() =>
     place(dimensions, 0, generator)
   );
@@ -35,10 +30,9 @@ function generate(generator: any, dimensions: number) {
   const image = [...Array(dimensions)].map((_, row) =>
     [...Array(dimensions)].map(
       (_, col) =>
-
-        ((intensity([row, col], peakPoints) * config.color.boundary)
-        + noise(generator))/config.color.boundary
-
+        (intensity([row, col], peakPoints) * config.color.boundary +
+          noise(generator)) /
+        config.color.boundary
     )
   );
 
@@ -75,8 +69,7 @@ interface MapProps {
   seed: string;
 }
 
-export default function Map({darkMode, theme, seed}: MapProps) {
-
+export default function Map({ darkMode, theme, seed }: MapProps) {
   const generator = seedrandom(seed);
   const image: number[][] = generate(generator, config.board.dimensions);
 
@@ -101,14 +94,8 @@ export default function Map({darkMode, theme, seed}: MapProps) {
   }
 
   const style = darkMode
-    ? {
-        backgroundColor: "black",
-        color: "white",
-      }
-    : {
-        backgroundColor: "white",
-        color: "black",
-      };
+    ? { backgroundColor: "black", color: "white" }
+    : { backgroundColor: "white", color: "black" };
 
   return (
     <div className="Map">
@@ -116,19 +103,46 @@ export default function Map({darkMode, theme, seed}: MapProps) {
         <div>
           <table>
             <tbody>
-              {render(theme, sample(image, position, config.board.subdimensions))}
+              {render(
+                theme,
+                sample(image, position, config.board.subdimensions)
+              )}
             </tbody>
           </table>
           <div className="Controls">
-            <button onClick={() => move(+0, -1)} style={style}>&#8593;</button>
-            <button onClick={() => move(+0, +1)} style={style}>&#8595;</button>
-            <button onClick={() => move(-1, +0)} style={style}>&#8592;</button>
-            <button onClick={() => move(+1, +0)} style={style}>&#8594;</button>
+            <button
+              className="Control"
+              onClick={() => move(+0, -1)}
+              style={style}
+            >
+              &#8593;
+            </button>
+            <button
+              className="Control"
+              onClick={() => move(+0, +1)}
+              style={style}
+            >
+              &#8595;
+            </button>
+            <button
+              className="Control"
+              onClick={() => move(-1, +0)}
+              style={style}
+            >
+              &#8592;
+            </button>
+            <button
+              className="Control"
+              onClick={() => move(+1, +0)}
+              style={style}
+            >
+              &#8594;
+            </button>
           </div>
-          <p className="Move">{moves}</p>
+          <p className="Move" style={style}>{moves}</p>
         </div>
       ) : (
-        <p className="End">
+        <p className="End" style={style}>
           {position[0]}, {position[1]}
         </p>
       )}
