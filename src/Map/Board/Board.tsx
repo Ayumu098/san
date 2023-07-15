@@ -68,12 +68,12 @@ function render(theme: string, heatmap: number[][]) {
   // Generates the cells of the map with the appropriate theme and heatmap
 
   return heatmap.map((row: number[], rowIndex: number) => (
-    <tr>
+    <tr key={rowIndex}>
       {row.map((cell: number, cellIndex: number) => (
         <Cell
           color={theme}
           intensity={cell}
-          reference={rowIndex * config.board.dimensions + cellIndex}
+          key={rowIndex * config.board.dimensions + cellIndex}
         />
       ))}
     </tr>

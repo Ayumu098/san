@@ -50,7 +50,7 @@ export default function Landing({
   return (
     <div className="Landing" style={style}>
       <div className="Introduction">
-        <h1>SAN <a href="https://github.com/Ayumu098/san">?</a></h1>
+        <h1>SAN <a href="https://github.com/Ayumu098/san" style={{color: theme}}>?</a></h1>
         <p> Socially Approaching Neighbors</p>
       </div>
 
@@ -73,6 +73,7 @@ export default function Landing({
       <div className="Colors">
         {config.color.choices.map((color: string) => (
           <Color
+            key={ColorDarkMode(darkMode, color)}
             color={ColorDarkMode(darkMode, color)}
             selected={ColorDarkMode(darkMode, color) === theme}
             onClick={() => setTheme(ColorDarkMode(darkMode, color))}

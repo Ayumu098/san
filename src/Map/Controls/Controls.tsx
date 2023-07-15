@@ -12,7 +12,7 @@ export default function Controls({ darkMode, move }: ControlsProps) {
   return (
     <div className="Controls">
       {["up", "down", "left", "right"].map((direction) => (
-        <Control darkMode={darkMode} direction={direction} move={move} />
+        <Control darkMode={darkMode} direction={direction} move={move} key={direction}/>
       ))}
     </div>
   );
