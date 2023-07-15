@@ -6,5 +6,16 @@ $dimension: min(5vw, 5vh);
     width: $dimension;
     height: $dimension;
 
-    transition: all .15s ease-in-out;
+    transition: all .15s ease;
+
+    animation-name: breathe;
+    animation-iteration-count: infinite;
+}
+
+@keyframes breathe {
+    0% { transform: scale(1);}
+    25% { transform: scale(0.9);}
+    50% { transform: scale(1);}
+    75% { transform: scale(1.1);}
+    100% { transform: scale(1);}
 }

@@ -1,51 +1,49 @@
-.Controls {
-
+.Map {
+  .Controls {
     display: flex;
     justify-content: space-evenly;
 
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
+    padding-top: min(2vw, 2vh);
+    padding-bottom: min(2vw, 2vh);
 
     .Control {
+      $dimension: min(11vw, 11vh);
 
-        $dimension: min(11vw, 11vh);
+      text-align: center;
+      vertical-align: middle;
 
-        text-align: center;
-        vertical-align: middle;
+      font-size: min(4vw, 4vh);
+      width: $dimension;
+      height: $dimension;
 
-        font-size: min(4vw, 4vh);
-        width: $dimension;
-        height: $dimension;
+      border: solid min(0.5vw, 0.5vh);
+      border-radius: min(2.5vw, 2.5vh);
 
-        border: solid;
-        border-radius: min(2.5vw, 2.5vh);
-
-        transition: all .15s ease-in-out;
+      transition: all 0.15s ease-in-out;
     }
 
     .Control:hover {
-        scale: 1.1;
+      scale: 1.1;
     }
 
     .Move {
-        text-align: center;
-        height: 100%
+      text-align: center;
+      height: 100%;
     }
-}
+  }
 
-.Move {
-    color: white;
-    font-size: max(2vw, 2vh);
+  .Move {
     display: block;
     margin: auto;
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
-}
 
-.End {
+
+  }
+
+  .End {
     color: white;
     font-size: max(8vw, 8vh);
     display: block;
@@ -53,4 +51,5 @@
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
+  }
 }

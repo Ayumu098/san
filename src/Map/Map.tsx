@@ -52,12 +52,16 @@ function place(dimensions: number, subdimensions: number, generator: any) {
   ];
 }
 
-function render(theme: string, space: number[][]) {
-  var count: number = 0;
+function render(theme: string, space: number[][], moves: number) {
   return space.map((row: number[], rowIndex: number) => (
     <tr>
       {row.map((cell: number, cellIndex: number) => (
-        <Cell color={theme} intensity={cell} reference={count++} />
+        <Cell
+          color={theme}
+          intensity={cell}
+          reference={rowIndex * config.board.dimensions + cellIndex}
+          breatheRate={0.5 + (moves/config.board.initialMoves)}
+        />
       ))}
     </tr>
   ));
@@ -105,7 +109,8 @@ export default function Map({ darkMode, theme, seed }: MapProps) {
             <tbody>
               {render(
                 theme,
-                sample(image, position, config.board.subdimensions)
+                sample(image, position, config.board.subdimensions),
+                moves
               )}
             </tbody>
           </table>
@@ -139,7 +144,9 @@ export default function Map({ darkMode, theme, seed }: MapProps) {
               &#8594;
             </button>
           </div>
-          <p className="Move" style={style}>{moves}</p>
+          <p className="Move" style={style}>
+            {moves}
+          </p>
         </div>
       ) : (
         <p className="End" style={style}>
