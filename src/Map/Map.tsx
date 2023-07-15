@@ -60,7 +60,7 @@ function render(theme: string, space: number[][], moves: number) {
           color={theme}
           intensity={cell}
           reference={rowIndex * config.board.dimensions + cellIndex}
-          breatheRate={0.5 + (moves/config.board.initialMoves)}
+          breatheRate={0.5 + 3*(moves/config.board.initialMoves)}
         />
       ))}
     </tr>
@@ -144,9 +144,6 @@ export default function Map({ darkMode, theme, seed }: MapProps) {
               &#8594;
             </button>
           </div>
-          <p className="Move" style={style}>
-            {moves}
-          </p>
         </div>
       ) : (
         <p className="End" style={style}>
