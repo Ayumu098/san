@@ -46,18 +46,24 @@ export default function Map({ darkMode, theme, seed }: MapProps) {
     }
   }
 
+  // Styling for background and components based on dark/light mode
+  const style = darkMode
+  ? { backgroundColor: "black", color: "white" }
+  : { backgroundColor: "white", color: "black" };
+
   return (
     <div className="Map">
       {moves > 0 ? (
         <div>
           <Board config={config} theme={theme} seed={seed} position={position}/>
-          <Bar moves={moves} />
+          <Bar darkMode={darkMode} moves={moves} />
           <Controls darkMode={darkMode} move={move} />
         </div>
       ) : (
-        <p className="End">
-          {position[0]}, {position[1]}
-        </p>
+        <div className="GameOver" >
+            <h1 style={style}>San?</h1>
+            <h2 style={style}>{`(${position[0]}, ${position[0]})`}</h2>
+        </div>
       )}
     </div>
   );
