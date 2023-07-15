@@ -62,7 +62,7 @@ export default function Map({ darkMode, theme, seed }: MapProps) {
       ) : (
         <div className="GameOver" >
             <h1 style={style}>San?</h1>
-            <h2 style={style}>{`(${position[0]}, ${position[0]})`}</h2>
+            <h2 style={style}>{`(${position[0]}, ${position[1]})`}</h2>
         </div>
       )}
     </div>
