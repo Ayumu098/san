@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Board from "./Board/Board";
+import Bar from "./Bar/Bar";
 import Controls from "./Controls/Controls";
 import config from "./config.json";
 
@@ -49,7 +50,8 @@ export default function Map({ darkMode, theme, seed }: MapProps) {
     <div className="Map">
       {moves > 0 ? (
         <div>
-          <Board config={config} theme={theme} seed={seed} position={position} />
+          <Board config={config} theme={theme} seed={seed} position={position}/>
+          <Bar moves={moves} />
           <Controls darkMode={darkMode} move={move} />
         </div>
       ) : (

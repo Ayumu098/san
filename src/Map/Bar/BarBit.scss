@@ -1,0 +1,21 @@
+.BarBit {
+
+    background-color: white;
+    height: min(1vw, 1vh);
+    flex-grow: 1;
+
+    margin-top: min(2vw, 2vh);
+    margin-bottom: min(2vw, 2vh);
+}
+
+.BarBit:first-child{
+    border-radius: 10px 0 0 10px;
+}
+
+.BarBit:last-child{
+    border-radius: 0 10px 10px 0;
+}
+
+.BarBit.Used {
+    opacity: 0;
+}
