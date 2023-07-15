@@ -1,0 +1,19 @@
+.Control {
+  $dimension: min(11vw, 11vh);
+
+  text-align: center;
+  vertical-align: middle;
+
+  font-size: min(4vw, 4vh);
+  width: $dimension;
+  height: $dimension;
+
+  border: solid min(0.25vw, 0.25vh);
+  border-radius: min(2.5vw, 2.5vh);
+
+  transition: all 0.15s ease-in-out;
+}
+
+.Control:hover {
+  scale: 1.1;
+}

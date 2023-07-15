@@ -2,16 +2,12 @@ import "./Landing.scss";
 import Color from "./Color";
 import config from "./config.json";
 
-interface LandingProps {
-  theme: string;
-  darkMode: boolean;
-  setDark: (darkMode: boolean) => void;
-  setTheme: (color: string) => void;
-  setStart: (start: boolean) => void;
-  setSeed: (seed: string) => void;
-}
-
 function ColorDarkMode(darkMode: boolean, color: string) {
+  // Sets the color to black if dark mode is on and the color is white
+  // Sets the color to white if dark mode is off and the color is black
+  // If color is neither black or white, returns the color as is
+  // To ensure dark mode toggle makes grayscale colors seen
+
   if (darkMode && color === "black") {
     color = "white";
   } else if (!darkMode && color === "white") {
@@ -21,6 +17,16 @@ function ColorDarkMode(darkMode: boolean, color: string) {
   return color;
 }
 
+// Set methods propagated from App.tsx
+interface LandingProps {
+    theme: string;
+    darkMode: boolean;
+    setDark: (darkMode: boolean) => void;
+    setTheme: (color: string) => void;
+    setStart: (start: boolean) => void;
+    setSeed: (seed: string) => void;
+  }
+
 export default function Landing({
   theme,
   darkMode,
@@ -29,10 +35,14 @@ export default function Landing({
   setStart,
   setSeed,
 }: LandingProps) {
+
+
+  // Styling for background and components based on dark/light mode
   const style = darkMode
     ? { backgroundColor: "black", color: "white" }
     : { backgroundColor: "white", color: "black" };
 
+  // Styling for dark/light mode toggle
   const toggleStyle = darkMode
     ? { backgroundColor: "black", borderColor: "white" }
     : { backgroundColor: "white", borderColor: "black" };

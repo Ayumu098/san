@@ -1,6 +1,8 @@
 .Color {
-    width: min(4.5vw, 4.5vh);
-    height: min(4.5vw, 4.5vh);
+    $dimension: min(4.5vw, 4.5vh);
+
+    width: $dimension;
+    height: $dimension;
 
     border: 0px;
     margin: min(1vw, 1vh);

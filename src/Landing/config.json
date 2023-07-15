@@ -1,13 +1,16 @@
 {
-  "color": {
-    "choices": [
-      "red",
-      "orange",
-      "yellow",
-      "green",
-      "blue",
-      "indigo",
-      "black"
-    ]
-  }
+    "color": {
+        "noiseBoundary": 100,
+        "boundary": 255,
+        "choices": [
+            "red",
+            "orange",
+            "yellow",
+            "green",
+            "blue",
+            "indigo",
+            "black"
+          ]
+    }
 }
+

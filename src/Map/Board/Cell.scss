@@ -1,0 +1,11 @@
+$dimension: min(5vw, 5vh);
+
+.Cell {
+  width: $dimension;
+  height: $dimension;
+
+  transition: all 0.2s ease;
+
+  animation-name: breathe;
+  animation-iteration-count: infinite;
+}
